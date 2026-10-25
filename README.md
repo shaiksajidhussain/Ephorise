@@ -1,36 +1,53 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Ephorise
 
-## Getting Started
+Digital studio website for Ephorise. React, Next.js, TypeScript, and a custom WebGL sculpture on large screens.
 
-First, run the development server:
+## Run
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+npm run lint
+npm run typecheck
+npm run build
+npm start
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Environment
 
-## Learn More
+Copy `.env.example` to `.env.local`.
 
-To learn more about Next.js, take a look at the following resources:
+| Variable | Required | Purpose |
+| --- | --- | --- |
+| `NEXT_PUBLIC_SITE_URL` | Production | Canonical URLs, Open Graph, sitemap, and robots. Use the live `https` origin. Localhost is ignored so it is never published. |
+| `NEXT_PUBLIC_PUBLIC_EMAIL` | Optional | Public email in the footer and on the contact page. Hidden when unset. |
+| `CONTACT_WEBHOOK_URL` | To deliver inquiries | Server-only HTTPS endpoint. The contact form posts to `/api/contact`, which validates the note and forwards JSON. Without this variable the form returns an error and does not pretend the message was sent. |
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Local development also accepts `http://127.0.0.1` or `http://localhost` as the webhook so you can test delivery. Production accepts public `https` endpoints only.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Webhook JSON:
 
-## Deploy on Vercel
+```json
+{
+  "name": "",
+  "email": "",
+  "company": "",
+  "service": "",
+  "budget": "",
+  "details": "",
+  "project": null,
+  "projectType": null,
+  "submittedAt": ""
+}
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Do not put the webhook URL or any private token in client code.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Projects
+
+Studies live in `src/data/projects.ts`. Add a published project there and a matching cover in `src/components/covers/Covers.tsx`. Case study pages are generated from the slug. Mark real client work by extending `projectType` only when the engagement can be named. The current entries are studio concepts.
