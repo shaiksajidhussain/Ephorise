@@ -6,10 +6,11 @@ import { Component, useEffect, useRef, useState, type ReactNode, type RefObject 
 import * as THREE from "three";
 import { SculptureFallback } from "@/components/hero/SculptureFallback";
 
-type Palette = { ink: string; paper: string; accent: string; accent2: string };
+type Palette = { ink: string; panel: string; paper: string; accent: string; accent2: string };
 
 const studioPalette: Palette = {
   ink: "#080d18",
+  panel: "#101827",
   paper: "#f7f9fc",
   accent: "#536dff",
   accent2: "#8b5cf6",
@@ -33,6 +34,7 @@ function usePalette() {
       const style = getComputedStyle(document.documentElement);
       const next = {
         ink: style.getPropertyValue("--ink").trim() || studioPalette.ink,
+        panel: style.getPropertyValue("--panel").trim() || studioPalette.panel,
         paper: style.getPropertyValue("--paper").trim() || studioPalette.paper,
         accent: style.getPropertyValue("--accent").trim() || studioPalette.accent,
         accent2: style.getPropertyValue("--accent-2").trim() || studioPalette.accent2,
