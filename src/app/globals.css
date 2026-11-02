@@ -34,11 +34,11 @@
   --panel: #f4f0e4;
   --paper: #590907;
   --paper-rgb: 89 9 7;
-  --paper-soft: #7a2418;
-  --mute: #5c5f56;
-  --mute-rgb: 92 95 86;
-  --accent: #590907;
-  --accent-rgb: 89 9 7;
+  --paper-soft: #3d5646;
+  --mute: #5e584e;
+  --mute-rgb: 94 88 78;
+  --accent: #3f6a4c;
+  --accent-rgb: 63 106 76;
   --accent-2: #a5a79b;
   --accent-2-rgb: 165 167 155;
   --scheme: light;
@@ -58,22 +58,6 @@
   --accent-2: #bfe9ff;
   --accent-2-rgb: 191 233 255;
   --scheme: light;
-}
-
-[data-theme="mocha"] {
-  --ink: #5b4632;
-  --ink-rgb: 91 70 50;
-  --panel: #4a3928;
-  --paper: #f4d9a0;
-  --paper-rgb: 244 217 160;
-  --paper-soft: #e4c48a;
-  --mute: #c9b08a;
-  --mute-rgb: 201 176 138;
-  --accent: #c8792c;
-  --accent-rgb: 200 121 44;
-  --accent-2: #f4d9a0;
-  --accent-2-rgb: 244 217 160;
-  --scheme: dark;
 }
 
 html {
@@ -98,6 +82,10 @@ body {
 ::selection {
   background: var(--accent);
   color: var(--paper);
+}
+
+[data-theme="sage"] ::selection {
+  color: var(--ink);
 }
 
 :focus-visible {
@@ -211,6 +199,11 @@ body {
   border-color: var(--accent);
 }
 
+[data-theme="sage"] .btn-ghost:hover {
+  background: rgb(var(--accent-rgb) / 0.12);
+  color: var(--accent);
+}
+
 .arrow {
   transition: transform 180ms ease;
 }
@@ -242,6 +235,10 @@ body {
 .nav-link:hover,
 .nav-link[aria-current="page"] {
   color: var(--paper);
+}
+
+[data-theme="sage"] .nav-link:hover {
+  color: var(--accent);
 }
 
 .menu-summary {
@@ -469,10 +466,21 @@ details[open] .when-open {
   gap: 0.8rem;
   border-top: 1px solid rgb(var(--paper-rgb) / 0.12);
   padding-block: 1.6rem;
+  transition:
+    background-color 160ms ease,
+    color 160ms ease;
+}
+
+.service-row:hover {
+  color: var(--accent);
 }
 
 .service-row:hover .row-title {
   color: var(--accent);
+}
+
+[data-theme="sage"] .service-row:hover {
+  background: rgb(var(--accent-rgb) / 0.1);
 }
 
 .stage-board {
@@ -1048,7 +1056,8 @@ li.is-open .stage-detail {
   display: flex;
   flex-direction: column;
   width: min(24rem, calc(100vw - 1.5rem));
-  height: min(34rem, calc(100svh - 5.4rem));
+  height: auto;
+  max-height: min(34rem, calc(100svh - 5.4rem));
   overflow: hidden;
   border: 1px solid rgb(var(--paper-rgb) / 0.16);
   border-radius: 0.9rem;
@@ -1059,7 +1068,8 @@ li.is-open .stage-detail {
 .theme-scroll {
   display: grid;
   min-height: 0;
-  height: 100%;
+  height: auto;
+  max-height: min(32rem, calc(100svh - 6.2rem));
   grid-template-columns: 1fr 1fr;
   align-content: start;
   gap: 0.7rem;

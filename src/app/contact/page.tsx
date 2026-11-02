@@ -45,7 +45,7 @@ export default function ContactPage({
             {email ? (
               <p>
                 <span className="label">Email</span>
-                <a className="mt-1 block text-paper underline decoration-white/20 underline-offset-4" href={`mailto:${email}`}>
+                <a className="mt-1 block text-paper underline decoration-paper/35 underline-offset-4" href={`mailto:${email}`}>
                   {email}
                 </a>
               </p>
@@ -62,7 +62,7 @@ export default function ContactPage({
               <p>
                 <span className="label">WhatsApp</span>
                 <a
-                  className="mt-1 block text-paper underline decoration-white/20 underline-offset-4"
+                  className="mt-1 block text-paper underline decoration-paper/35 underline-offset-4"
                   href={`https://wa.me/${whatsapp}`}
                   target="_blank"
                   rel="noopener noreferrer"
@@ -80,7 +80,7 @@ export default function ContactPage({
           </div>
           <p className="mt-8 text-sm leading-6 text-mute">
             What you send is used only to reply to this enquiry. Read the{" "}
-            <Link className="underline decoration-white/20 underline-offset-4" href="/privacy">
+            <Link className="underline decoration-paper/35 underline-offset-4" href="/privacy">
               privacy policy
             </Link>
             . Do not include passwords, payment details, or other secrets.

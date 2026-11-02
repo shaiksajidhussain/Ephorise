@@ -23,7 +23,7 @@ export function Footer() {
             applications, SEO, and digital marketing.
           </p>
           {email ? (
-            <a className="mt-6 inline-flex text-paper underline decoration-white/20 underline-offset-4" href={`mailto:${email}`}>
+            <a className="mt-6 inline-flex text-paper underline decoration-paper/35 underline-offset-4" href={`mailto:${email}`}>
               {email}
             </a>
           ) : null}

@@ -30,15 +30,6 @@ const themes = [
       { name: "Mineral grey", hex: "#B7B7B7", tone: "dark" },
     ],
   },
-  {
-    id: "mocha",
-    name: "Mocha",
-    swatches: [
-      { name: "Mocha brown", hex: "#5B4632", tone: "light" },
-      { name: "Champagne gold", hex: "#F4D9A0", tone: "dark" },
-      { name: "Burnt amber", hex: "#C8792C", tone: "light" },
-    ],
-  },
 ] as const;
 
 type ThemeId = (typeof themes)[number]["id"];

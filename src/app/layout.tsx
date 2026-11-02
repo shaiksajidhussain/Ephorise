@@ -35,7 +35,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <script
           dangerouslySetInnerHTML={{
             __html:
-              "try{var t=localStorage.getItem('ephorise-theme');var ok={sage:1,glacier:1,mocha:1};if(ok[t])document.documentElement.dataset.theme=t;}catch(e){}",
+              "try{var t=localStorage.getItem('ephorise-theme');var ok={sage:1,glacier:1};if(ok[t])document.documentElement.dataset.theme=t;}catch(e){}",
           }}
         />
         <a className="skip-link" href="#content">

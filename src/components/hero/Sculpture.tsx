@@ -15,6 +15,16 @@ const studioPalette: Palette = {
   accent2: "#8b5cf6",
 };
 
+function luminance(hex: string) {
+  const value = hex.replace("#", "");
+  if (value.length < 6) return 1;
+  const channel = (start: number) => {
+    const part = Number.parseInt(value.slice(start, start + 2), 16) / 255;
+    return part <= 0.04045 ? part / 12.92 : ((part + 0.055) / 1.055) ** 2.4;
+  };
+  return 0.2126 * channel(0) + 0.7152 * channel(2) + 0.0722 * channel(4);
+}
+
 function usePalette() {
   const [palette, setPalette] = useState(studioPalette);
 
@@ -40,6 +50,11 @@ function usePalette() {
 
 function Fold({ pointer, palette }: { pointer: RefObject<{ x: number; y: number }>; palette: Palette }) {
   const group = useRef<THREE.Group>(null);
+  const lightPage = luminance(palette.ink) > 0.55;
+  const metal = lightPage ? palette.panel : "#e8eefc";
+  const glass = lightPage ? "#fbf8f1" : "#f4f7ff";
+  const base = lightPage ? palette.accent2 : "#c5d2e8";
+  const ring = lightPage ? palette.panel : "#d5def2";
 
   useFrame((state, delta) => {
     const current = group.current;
@@ -65,7 +80,7 @@ function Fold({ pointer, palette }: { pointer: RefObject<{ x: number; y: number 
       </mesh>
       <mesh position={[-0.72, 0.16, -0.05]} rotation={[0.04, -0.72, 0.02]}>
         <boxGeometry args={[1.15, 3.35, 0.045]} />
-        <meshPhysicalMaterial color="#e8eefc" metalness={0.92} roughness={0.16} clearcoat={0.6} />
+        <meshPhysicalMaterial color={metal} metalness={0.92} roughness={0.16} clearcoat={0.6} />
       </mesh>
       <mesh position={[-0.72, 0.16, 0.02]} rotation={[0.04, -0.72, 0.02]}>
         <boxGeometry args={[0.018, 3.15, 0.02]} />
@@ -74,7 +89,7 @@ function Fold({ pointer, palette }: { pointer: RefObject<{ x: number; y: number 
       <mesh position={[0.42, 0.02, 0.42]} rotation={[0.08, 0.78, -0.03]}>
         <boxGeometry args={[1.55, 2.85, 0.04]} />
         <meshPhysicalMaterial
-          color="#f4f7ff"
+          color={glass}
           roughness={0.04}
           metalness={0}
           transmission={0.86}
@@ -88,11 +103,11 @@ function Fold({ pointer, palette }: { pointer: RefObject<{ x: number; y: number 
       </mesh>
       <mesh position={[0.08, -1.15, 0.12]} rotation={[0.18, 0.2, 0.04]}>
         <boxGeometry args={[2.7, 0.035, 1.05]} />
-        <meshPhysicalMaterial color="#c5d2e8" metalness={0.88} roughness={0.2} clearcoat={0.4} />
+        <meshPhysicalMaterial color={base} metalness={0.88} roughness={0.2} clearcoat={0.4} />
       </mesh>
       <mesh rotation={[1.22, 0.18, 0.42]} position={[0.12, 0.08, -0.2]}>
         <torusGeometry args={[1.62, 0.012, 20, 160]} />
-        <meshStandardMaterial color="#d5def2" metalness={1} roughness={0.18} />
+        <meshStandardMaterial color={ring} metalness={1} roughness={0.18} />
       </mesh>
       <mesh position={[1.15, 1.05, 0.2]} rotation={[0.35, 0.15, 0.65]}>
         <boxGeometry args={[0.55, 0.02, 0.18]} />
@@ -103,15 +118,22 @@ function Fold({ pointer, palette }: { pointer: RefObject<{ x: number; y: number 
 }
 
 function Scene({ pointer, palette }: { pointer: RefObject<{ x: number; y: number }>; palette: Palette }) {
+  const keyLight = luminance(palette.paper) > 0.45 ? palette.paper : palette.ink;
+
   return (
     <>
       <ambientLight intensity={0.35} />
-      <directionalLight position={[-3.5, 4.2, 3.5]} intensity={3.4} color={palette.paper} />
+      <directionalLight position={[-3.5, 4.2, 3.5]} intensity={3.4} color={keyLight} />
       <directionalLight position={[3.2, 1.2, 2]} intensity={1.1} color={palette.accent} />
       <pointLight position={[-1.6, 0.4, 1.8]} intensity={18} distance={8} color={palette.accent} />
       <pointLight position={[1.8, -0.4, 1.4]} intensity={2.2} distance={7} color={palette.accent2} />
-      <Environment resolution={128} frames={1} environmentIntensity={1}>
-        <Lightformer form="rect" intensity={3} position={[-2, 2.4, 2]} scale={[5, 2.2, 1]} color={palette.paper} />
+      <Environment
+        key={`${palette.ink}|${palette.paper}|${palette.accent}|${palette.accent2}`}
+        resolution={128}
+        frames={1}
+        environmentIntensity={1}
+      >
+        <Lightformer form="rect" intensity={3} position={[-2, 2.4, 2]} scale={[5, 2.2, 1]} color={keyLight} />
         <Lightformer form="rect" intensity={8} position={[-2.2, 0.2, 1.6]} scale={[0.35, 4.2, 1]} color={palette.accent} />
         <Lightformer form="rect" intensity={0.8} position={[2.4, -0.8, -1]} scale={[2, 1.4, 1]} color={palette.accent2} />
       </Environment>
