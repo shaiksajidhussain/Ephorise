@@ -23,6 +23,7 @@ export function pageMeta({
   const site = siteUrl();
   const fullTitle = absolute ? title : `${title} — ${STUDIO}`;
   const pathname = path.startsWith("/") ? path : `/${path}`;
+  const pageUrl = site ? `${site}${pathname}` : pathname;
   const image = site
     ? [{ url: `${site}/og`, width: 1200, height: 630, alt: SHARE_ALT }]
     : undefined;
@@ -31,7 +32,7 @@ export function pageMeta({
     title: { absolute: fullTitle },
     description,
     keywords,
-    alternates: canonical ? { canonical: pathname } : undefined,
+    alternates: canonical ? { canonical: pageUrl } : undefined,
     openGraph: {
       title: fullTitle,
       description,

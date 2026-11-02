@@ -12,8 +12,16 @@ export const HOME_KEYWORDS = [
   "digital marketing agency",
 ];
 
+function configuredOrigin(): string | null {
+  const explicit = process.env.NEXT_PUBLIC_SITE_URL?.trim();
+  if (explicit) return explicit;
+  const production = process.env.VERCEL_PROJECT_PRODUCTION_URL?.trim();
+  if (!production) return null;
+  return production.includes("://") ? production : `https://${production}`;
+}
+
 export function siteUrl(): string | null {
-  const raw = process.env.NEXT_PUBLIC_SITE_URL?.trim().replace(/\/$/, "");
+  const raw = configuredOrigin()?.replace(/\/$/, "");
   if (!raw) return null;
   try {
     const url = new URL(raw);
