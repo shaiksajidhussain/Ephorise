@@ -24,7 +24,6 @@ export type Inquiry = {
   budget: (typeof budgetOptions)[number]["value"];
   details: string;
   project: string | null;
-  consent: true;
 };
 
 export type InquiryErrors = Partial<Record<keyof Inquiry | "form", string>>;
@@ -55,7 +54,6 @@ export function validateInquiry(
   const budget = clean(source.budget, 20);
   const details = clean(source.details, 4000);
   const projectSlug = clean(source.project, 80);
-  const consent = source.consent === true;
 
   if (name.length < 2) errors.name = "Enter your name.";
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) {
@@ -69,7 +67,6 @@ export function validateInquiry(
   if (details.length < 20) {
     errors.details = "Add a short note about the project.";
   }
-  if (!consent) errors.consent = "Confirm that we may use this note to reply.";
 
   const project = /^[a-z0-9-]{0,80}$/.test(projectSlug) && projectSlug ? projectSlug : null;
 
@@ -86,7 +83,6 @@ export function validateInquiry(
       budget: budget as Inquiry["budget"],
       details,
       project,
-      consent: true,
     },
   };
 }

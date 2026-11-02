@@ -62,8 +62,7 @@ export function publicLocation(): string | null {
 export const navLinks = [
   { href: "/", label: "Home" },
   { href: "/services", label: "Services" },
-  { href: "/our-work", label: "Our Work & Case Studies" },
+  { href: "/our-work", label: "Our Work" },
   { href: "/about", label: "About Us" },
-  { href: "/our-process", label: "Our Process" },
   { href: "/contact", label: "Contact Us" },
 ] as const;

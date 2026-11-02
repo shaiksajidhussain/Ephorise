@@ -40,7 +40,6 @@ export function InquiryForm({
       budget: String(data.get("budget") ?? ""),
       details: String(data.get("details") ?? ""),
       project: project ?? "",
-      consent: data.get("consent") === "on",
       company_site: String(data.get("company_site") ?? ""),
     };
 
@@ -156,7 +155,7 @@ export function InquiryForm({
             </p>
           ) : null}
         </div>
-        <div className="field md:col-span-2">
+        <div className="field">
           <label className="field-label" htmlFor={`${baseId}-budget`}>
             Estimated Budget (optional)
           </label>
@@ -189,20 +188,6 @@ export function InquiryForm({
             {errors.details}
           </p>
         ) : null}
-      </div>
-      <div className="field">
-        <label className="flex items-start gap-3 text-sm text-mute" htmlFor={`${baseId}-consent`}>
-          <input
-            id={`${baseId}-consent`}
-            name="consent"
-            type="checkbox"
-            className="mt-1 h-4 w-4"
-            aria-invalid={errors.consent ? true : undefined}
-            required
-          />
-          <span>Use this enquiry only to reply. It will not be added to a mailing list.</span>
-        </label>
-        {errors.consent ? <p className="field-error">{errors.consent}</p> : null}
       </div>
       {status.state === "error" ? (
         <p role="alert" className="field-error">

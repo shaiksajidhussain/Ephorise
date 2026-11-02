@@ -117,7 +117,7 @@ export function ProcessPreview() {
         <div className="lg:col-span-5">
           <p className="label">Our Process</p>
           <h2 className="section-title mt-4">From Idea to Execution</h2>
-          <Link href="/our-process" className="mt-8 inline-flex items-center gap-2">
+          <Link href="/about#process" className="mt-8 inline-flex items-center gap-2">
             See the full process
             <Arrow />
           </Link>

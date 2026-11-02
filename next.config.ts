@@ -9,7 +9,8 @@ const nextConfig: NextConfig = {
     return [
       { source: "/work", destination: "/our-work", permanent: true },
       { source: "/work/:slug", destination: "/our-work", permanent: true },
-      { source: "/process", destination: "/our-process", permanent: true },
+      { source: "/process", destination: "/about", permanent: true },
+      { source: "/our-process", destination: "/about", permanent: true },
       { source: "/services/web-development", destination: "/services/website-development", permanent: true },
     ];
   },

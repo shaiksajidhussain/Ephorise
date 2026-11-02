@@ -1,5 +1,6 @@
 import { ContactBand } from "@/components/home/ContactBand";
 import { HeaderArt } from "@/components/ui/HeaderArt";
+import { processSteps } from "@/data/process";
 import { pageMeta } from "@/lib/seo";
 import { TAGLINE } from "@/lib/site";
 
@@ -85,6 +86,30 @@ export default function AboutPage() {
               </li>
             ))}
           </ul>
+        </div>
+      </section>
+
+      <section id="process" className="border-t border-line">
+        <div className="wrap section grid gap-12 lg:grid-cols-12">
+          <div className="lg:col-span-5">
+            <p className="label">Our Process</p>
+            <h2 className="section-title mt-4">A Clear Process. A Shared Vision.</h2>
+            <p className="deck mt-6">
+              A successful digital project needs more than a good idea. It requires clear objectives, thoughtful
+              planning, effective communication, and careful execution.
+            </p>
+          </div>
+          <ol className="lg:col-span-7">
+            {processSteps.map((step) => (
+              <li key={step.index} className="grid grid-cols-[3rem_1fr] gap-4 border-t border-line py-5">
+                <span className="label">{step.index}</span>
+                <div>
+                  <h3 className="text-2xl font-medium tracking-[-0.03em]">{step.title}</h3>
+                  <p className="deck mt-2">{step.summary}</p>
+                </div>
+              </li>
+            ))}
+          </ol>
         </div>
       </section>
 
