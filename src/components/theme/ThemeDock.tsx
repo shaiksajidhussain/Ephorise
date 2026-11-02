@@ -13,69 +13,6 @@ const themes = [
     ],
   },
   {
-    id: "lavender",
-    name: "Lavender",
-    swatches: [
-      { name: "Lavender", hex: "#C8B3E8", tone: "dark" },
-      { name: "Chartreuse", hex: "#D4FF3F", tone: "dark" },
-      { name: "Tomato red", hex: "#E34234", tone: "light" },
-    ],
-  },
-  {
-    id: "ivory",
-    name: "Ivory",
-    swatches: [
-      { name: "Warm ivory", hex: "#F9EBD7", tone: "dark" },
-      { name: "Emerald", hex: "#046A38", tone: "light" },
-      { name: "Vermilion", hex: "#E34222", tone: "light" },
-    ],
-  },
-  {
-    id: "signal",
-    name: "Signal",
-    swatches: [
-      { name: "Jet black", hex: "#080808", tone: "light" },
-      { name: "Hot pink", hex: "#FF2DAB", tone: "light" },
-      { name: "Chartreuse", hex: "#D4FF3F", tone: "dark" },
-    ],
-  },
-  {
-    id: "obsidian",
-    name: "Obsidian",
-    swatches: [
-      { name: "Obsidian black", hex: "#080808", tone: "light" },
-      { name: "Chrome silver", hex: "#CDCBCB", tone: "dark" },
-      { name: "Laser crimson", hex: "#D41514", tone: "light" },
-    ],
-  },
-  {
-    id: "cobalt",
-    name: "Cobalt",
-    swatches: [
-      { name: "Electric cobalt", hex: "#0002CC", tone: "light" },
-      { name: "Deep obsidian", hex: "#01000C", tone: "light" },
-      { name: "Vibrant crimson", hex: "#BF032F", tone: "light" },
-    ],
-  },
-  {
-    id: "coral",
-    name: "Coral",
-    swatches: [
-      { name: "Cool steel", hex: "#929DA7", tone: "dark" },
-      { name: "Midnight charcoal", hex: "#17191C", tone: "light" },
-      { name: "Coral orange", hex: "#FF4B32", tone: "light" },
-    ],
-  },
-  {
-    id: "orchid",
-    name: "Orchid",
-    swatches: [
-      { name: "Pastel orchid", hex: "#E7B0DE", tone: "dark" },
-      { name: "Eggplant", hex: "#400849", tone: "light" },
-      { name: "Signal orange", hex: "#FF5A0A", tone: "light" },
-    ],
-  },
-  {
     id: "sage",
     name: "Sage",
     swatches: [
@@ -91,33 +28,6 @@ const themes = [
       { name: "Glacier blue", hex: "#BFE9FF", tone: "dark" },
       { name: "Ultraviolet", hex: "#6F3DFF", tone: "light" },
       { name: "Mineral grey", hex: "#B7B7B7", tone: "dark" },
-    ],
-  },
-  {
-    id: "flora",
-    name: "Flora",
-    swatches: [
-      { name: "Porcelain", hex: "#F3E6D7", tone: "dark" },
-      { name: "Heather purple", hex: "#9B7ED6", tone: "dark" },
-      { name: "Electric lemon", hex: "#E4FF3B", tone: "dark" },
-    ],
-  },
-  {
-    id: "forest",
-    name: "Forest",
-    swatches: [
-      { name: "Charcoal black", hex: "#171717", tone: "light" },
-      { name: "Forest green", hex: "#06110C", tone: "light" },
-      { name: "Crimson red", hex: "#A31C1B", tone: "light" },
-    ],
-  },
-  {
-    id: "lemon",
-    name: "Lemon",
-    swatches: [
-      { name: "Lemon", hex: "#FFF21A", tone: "dark" },
-      { name: "Charcoal black", hex: "#171717", tone: "light" },
-      { name: "Electric lavender", hex: "#A66BFF", tone: "light" },
     ],
   },
   {
