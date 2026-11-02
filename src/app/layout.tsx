@@ -32,6 +32,12 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="en" className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`} suppressHydrationWarning>
       <body className="flex min-h-full flex-col" suppressHydrationWarning>
+        <script
+          dangerouslySetInnerHTML={{
+            __html:
+              "try{var t=localStorage.getItem('ephorise-theme');var ok={lavender:1,ivory:1,signal:1,obsidian:1,cobalt:1,coral:1,orchid:1,sage:1,glacier:1,flora:1,forest:1,lemon:1,mocha:1};if(ok[t])document.documentElement.dataset.theme=t;}catch(e){}",
+          }}
+        />
         <a className="skip-link" href="#content">
           Skip to content
         </a>
