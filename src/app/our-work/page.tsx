@@ -3,13 +3,14 @@ import { ContactBand } from "@/components/home/ContactBand";
 import { Arrow } from "@/components/ui/Arrow";
 import { HeaderArt } from "@/components/ui/HeaderArt";
 import { WorkMark } from "@/components/ui/Marks";
+import { ProjectCard } from "@/components/work/ProjectCard";
 import { inspirationBrands, moreWebsiteWork, socialProjects, websiteProjects } from "@/data/projects";
 import { pageMeta } from "@/lib/seo";
 
 export const metadata = pageMeta({
   title: "Our Work | Website Development & Digital Marketing | Ephorise",
   description:
-    "Explore Ephorise's website development and digital marketing projects across sports, lifestyle, food, finance, fashion, and consumer brands.",
+    "Explore Ephorise's website development and digital marketing projects across sports, engineering, edtech, agritech, food, finance, fashion, and consumer brands.",
   path: "/our-work",
   absolute: true,
   keywords: [
@@ -43,27 +44,10 @@ export default function OurWorkPage() {
       <section className="border-t border-line">
         <div className="wrap section relative z-[1] grid gap-8 md:grid-cols-2">
           {websiteProjects.map((project, index) => (
-            <article key={project.slug} id={project.slug} className="border border-line p-6 md:p-8">
-              <WorkMark index={index} />
-              <p className="label">{project.industry}</p>
-              <h2 className="mt-4 text-3xl font-medium tracking-[-0.04em]">{project.title}</h2>
-              <p className="deck mt-4">{project.summary}</p>
-              <p className="mt-5 text-sm text-paper">Our Work: {project.services.join(" | ")}</p>
-              {project.url ? (
-                <a
-                  href={project.url}
-                  className="btn btn-ghost mt-6"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  View Website
-                  <Arrow />
-                </a>
-              ) : null}
-            </article>
+            <ProjectCard key={project.slug} project={project} priority={index < 2} />
           ))}
-          <article className="border border-line p-6 md:p-8">
-            <WorkMark index={5} />
+          <article className="project-card">
+            <WorkMark index={websiteProjects.length} />
             <p className="label">{moreWebsiteWork.industry}</p>
             <h2 className="mt-4 text-3xl font-medium tracking-[-0.04em]">{moreWebsiteWork.title}</h2>
             <p className="deck mt-4">{moreWebsiteWork.summary}</p>

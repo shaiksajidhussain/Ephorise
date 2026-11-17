@@ -4,6 +4,9 @@ const nextConfig: NextConfig = {
   cacheComponents: true,
   partialPrefetching: true,
   poweredByHeader: false,
+  images: {
+    remotePatterns: [new URL("https://res.cloudinary.com/dknjrobkx/image/upload/**")],
+  },
   transpilePackages: ["three", "@react-three/fiber", "@react-three/drei"],
   async redirects() {
     return [

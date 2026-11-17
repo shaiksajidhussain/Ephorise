@@ -1,4 +1,5 @@
 import type { MetadataRoute } from "next";
+import { websiteProjects } from "@/data/projects";
 import { services } from "@/data/services";
 import { siteUrl } from "@/lib/site";
 
@@ -11,6 +12,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/services",
     ...services.map((service) => `/services/${service.id}`),
     "/our-work",
+    ...websiteProjects.map((project) => `/our-work/${project.slug}`),
     "/about",
     "/contact",
     "/privacy",

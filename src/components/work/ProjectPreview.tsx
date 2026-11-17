@@ -4,7 +4,10 @@ import type { WebsiteProject } from "@/data/projects";
 export function ProjectPreview({ project }: { project: WebsiteProject }) {
   return (
     <article className="border-t border-line py-8">
-      <p className="label">{project.industry}</p>
+      <p className="label">
+        {project.industry}
+        {project.status ? <span className="ml-3">· {project.status}</span> : null}
+      </p>
       <h3 className="mt-3 text-3xl font-medium tracking-[-0.04em]">{project.title}</h3>
       <p className="deck mt-3">{project.summary}</p>
       <p className="mt-4 text-sm text-mute">{project.services.join(" | ")}</p>

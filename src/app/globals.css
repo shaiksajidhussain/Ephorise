@@ -1194,3 +1194,103 @@ li.is-open .stage-detail {
   }
 }
 
+
+/* Our Work — project cards */
+.project-card {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid rgb(var(--paper-rgb) / 0.14);
+  padding: 1rem 1rem 1.5rem;
+  transition:
+    border-color 200ms ease,
+    background-color 200ms ease;
+}
+
+.project-card:hover {
+  border-color: var(--accent);
+  background: rgb(var(--accent-rgb) / 0.06);
+}
+
+.project-card .project-title {
+  transition: color 160ms ease;
+}
+
+.project-card:hover .project-title {
+  color: var(--accent);
+}
+
+.project-card .project-shot {
+  transition: border-color 200ms ease;
+}
+
+.project-card:hover .project-shot {
+  border-color: rgb(var(--accent-rgb) / 0.5);
+}
+
+[data-theme="sage"] .project-card:hover {
+  background: rgb(var(--accent-rgb) / 0.1);
+}
+
+@media (min-width: 768px) {
+  .project-card {
+    padding: 1rem 1rem 1.75rem;
+  }
+}
+
+.project-shot {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  background: var(--ink);
+  border: 1px solid rgb(var(--paper-rgb) / 0.1);
+}
+
+.project-shot-placeholder {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  background:
+    radial-gradient(120% 90% at 85% 0%, rgb(var(--accent-rgb) / 0.35), transparent 60%),
+    linear-gradient(180deg, rgb(var(--paper-rgb) / 0.04), transparent);
+}
+
+/* Project page — back button and launch badge */
+.back-link {
+  min-height: 2.5rem;
+  font-size: 0.88rem;
+}
+
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  border: 1px solid rgb(var(--accent-rgb) / 0.5);
+  background: rgb(var(--accent-rgb) / 0.1);
+  color: var(--accent);
+  padding: 0.35rem 0.8rem;
+  font-family: var(--font-geist-mono), ui-monospace, monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.status-badge::before {
+  content: "";
+  width: 0.45rem;
+  height: 0.45rem;
+  border-radius: 999px;
+  background: currentColor;
+  animation: status-pulse 1.8s ease-in-out infinite;
+}
+
+@keyframes status-pulse {
+  50% {
+    opacity: 0.3;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .status-badge::before {
+    animation: none;
+  }
+}
